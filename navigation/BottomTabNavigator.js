@@ -3,6 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
+import AccountScreen from '../screens/AccountScreen';
+import WatchScreen from '../screens/WatchScreen';
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = 'Home';
@@ -14,23 +16,51 @@ export default function BottomTabNavigator({ navigation, route }) {
   navigation.setOptions({ headerTitle: getHeaderTitle(route) });
 
   return (
-    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
+    <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME} tabBarOptions={
+      {
+        activeTintColor:'#F21905',
+        style:{
+          backgroundColor:"#252525"
+        }
+      }
+    }>
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          title: 'Get Started',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-code-working" />,
+          title: 'Home',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-home" />,
         }}
       />
+
       <BottomTab.Screen
-        name="Links"
+        name="Movies"
+        component={WatchScreen}
+        options={{
+          title:'Movies',
+          tabBarIcon:({focused})=> <TabBarIcon focused={focused} name="md-navigate"/>,
+        }}
+      />
+      
+
+      <BottomTab.Screen
+        name="Sea"
         component={LinksScreen}
         options={{
-          title: 'Resources',
-          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-book" />,
+          title: 'Search',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-search" />,
         }}
       />
+
+      <BottomTab.Screen
+        name="Account"
+        component={AccountScreen}
+        options={{
+          title: 'Account',
+          tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name="md-person" />,
+        }}
+      />
+      
     </BottomTab.Navigator>
   );
 }
@@ -40,8 +70,8 @@ function getHeaderTitle(route) {
 
   switch (routeName) {
     case 'Home':
-      return 'How to get started';
-    case 'Links':
-      return 'Links to learn more';
+      return 'Home';
+    case 'Search':
+      return 'Search';
   }
 }
