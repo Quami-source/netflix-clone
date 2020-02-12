@@ -1,12 +1,12 @@
 import React from "react";
 import {View,Text} from "react-native";
 
-const HomeScreen = ()=>{
+const WatchScreen = ()=>{
   return(
     <View style={{backgroundColor:"#252525",flex:1}}>
-      <Text style={{color:'#fff'}}>Home Screen</Text>
+      <Text>Watch Screen</Text>
     </View>
   );
 };
 
-export default HomeScreen;
+export default WatchScreen;
